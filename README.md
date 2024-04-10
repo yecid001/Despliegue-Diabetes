@@ -1,2 +1,3 @@
 # Despliegue-Diabetes
-Archivos para el despliegue 
+- Archivos para el despliegue
+- algoritmos entrenados 
