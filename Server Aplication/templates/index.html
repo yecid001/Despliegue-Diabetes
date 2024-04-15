@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Predicción de Diabetes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.8;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #343a40;
+      }
+      .form-control {
+        height: 50px;
+        padding: 0 60px;
+        font-size: 2.1rem;
+        border-radius: 19px;
+        border: 1px solid #ccc;
+      }
+      .btn-primary {
+        background-color: #29d671;
+        border-color: #29d671;
+        height: 30px;
+        padding: 0 10px;
+        border-radius: 19px;
+        font-size: 1.4rem;
+        margin-top: 0.5cm;
+      }
+      .btn-primary:hover {
+        background-color: #505c51;
+        border-color: #19c730;
+      }
+      .btn-clear {
+        background-color: #f0ad4e;
+        border-color: #eea236;
+        margin-left: 10px;
+      }
+      .btn-clear:hover {
+        background-color: #ec971f;
+        border-color: #d58512;
+      }
+      .alert {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+      }
+      .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+      }
+      .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="text-center mt-5 text-primary">Predicción de Diabetes</h1>
+        <form id="diabetesForm" action="http://127.0.0.1:5000" method="post">
+          <div class="row mt-5"> <!-- Corrección realizada aquí -->
+            <div class="col">
+              <label for="Pregnancies" class="form-label"><strong>Número de embarazos:</strong></label>
+              <input type="number" class="form-control" id="Pregnancies" name="Pregnancies" required>
+            </div>
+            <div class="col">
+              <label for="Glucose" class="form-label"><strong>Nivel de glucosa en plasma en ayunas (mg/dL):</strong></label>
+              <input type="number" class="form-control" id="Glucose" name="Glucose" step="0.1" required>
+            </div>
+            <div class="col">
+              <label for="BloodPressure" class="form-label"><strong>Presión arterial sistólica (mmHg):</strong></label>
+              <input type="number" class="form-control" id="BloodPressure" name="BloodPressure" required>
+            </div>
+            <div class="col">
+              <label for="SkinThickness" class="form-label"><strong>Grosor del pliegue cutáneo basal (mm):</strong></label>
+              <input type="number" class="form-control" id="SkinThickness" name="SkinThickness" step="0.01" required>
+            </div>
+            <div class="col">
+              <label for="Insulin" class="form-label"><strong>Insulina (μU/mL):</strong></label>
+              <input type="number" class="form-control" id="Insulin" name="Insulin" required>
+            </div>
+            <div class="col">
+              <label for="BMI" class="form-label"><strong>Índice de masa corporal (BMI):</strong></label>
+              <input type="number" class="form-control" id="BMI" name="BMI" step="0.1" required>
+            </div>
+            <div class="col">
+              <label for="DiabetesPedigreeFunction" class="form-label"><strong>Función de pedigrí de diabetes:</strong></label>
+              <input type="number" class="form-control" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" step="0.01" required>
+            </div>
+            <div class="col">
+              <label for="Age" class="form-label"><strong>Edad (años):</strong></label>
+              <input type="number" class="form-control" id="Age" name="Age" required>
+            </div>
+          </div>
+          <div>
+            <form id="diabetesForm">
+              <button type="button" class="btn btn-primary mt-3" onclick="submitForm()">Enviar</button>
+            </form>
+            {% if outcome %}
+              <div class="alert alert-{{ outcome[0] }}" role="alert" class="mt-3">
+                {{ outcome[1] }}
+              </div>
+            {% endif %}
+          </div>
+    </body>
+</html>

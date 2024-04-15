@@ -1,0 +1,8 @@
+Flask                        
+imbalanced-learn           
+importlib-metadata           
+numpy                      
+pandas                      
+pickle4                     
+pip                          
+scikit-learn                 
